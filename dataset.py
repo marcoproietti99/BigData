@@ -30,7 +30,7 @@ def custom_mapping(valore):
         return 3
  
 # Leggi il dataset Excel
-df = pd.read_csv("balanced_WorstTimeCustomerRemoval.csv",sep=",")
+df = pd.read_csv("balanced_final_WorstTimeCustomerRemoval.csv",sep=",")
  
 df['Results'] = df['Results'].apply(custom_mapping)
 
