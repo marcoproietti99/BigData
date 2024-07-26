@@ -16,14 +16,14 @@ def read_xy_values(file_path):
     
     return data[['x', 'y']]
 
-# Passaggio 1: Trovare i valori minimi e massimi globali di x e y
+# Trova i valori minimi e massimi globali di x e y
 global_min_x = float('inf')
 global_max_x = float('-inf')
 global_min_y = float('inf')
 global_max_y = float('-inf')
 
-input_dir = 'C:\\Users\\marco\\Downloads\\EVRPTW 1\\EVRPTW\\data'  # Sostituisci con il percorso della cartella di input
-output_dir = 'instances'  # Sostituisci con il percorso della cartella di output
+input_dir = 'data' 
+output_dir = 'instances'  
 
 for file_name in os.listdir(input_dir):
     if file_name.endswith(".txt"):
@@ -62,7 +62,7 @@ def normalize_and_save(file_path, output_dir, global_min_x, global_max_x, global
 # Crea la cartella di output se non esiste
 os.makedirs(output_dir, exist_ok=True)
 
-# Passaggio 2: Normalizzare e salvare i file utilizzando i valori globali
+# Normalizzare e salvare i file utilizzando i valori globali
 for file_name in os.listdir(input_dir):
     if file_name.endswith(".txt"):
         file_path = os.path.join(input_dir, file_name)
