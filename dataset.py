@@ -13,7 +13,7 @@ def load():
         pass
     args = Args()
     args.DATASET_PATH = ''
-    args.COMPLETE_IGS_NAME = 'balanced_WorstTimeCustomerRemoval'
+    args.COMPLETE_IGS_NAME = 'balanced_final_WorstTimeCustomerRemoval'
     return args
  
 #dataset elaborati: balanced_ZoneCustomerRemoval, balanced_WorstTimeCustomerRemoval, balanced_WorstDistanceCustomerRemoval, balanced_TimeBasedCustomerRemoval, balanced_ShawCustomerRemoval, balanced_RandomRouteCustomerRemoval, balanced_RandomCustomerRemoval, balanced_GreedyRouteRemoval, balanced_DemandBasedCustomerRemoval
