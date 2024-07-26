@@ -82,7 +82,7 @@ class TraceDataset(InMemoryDataset):
 
     @property
     def processed_file_names(self):
-        return [f'{args.COMPLETE_IGS_NAME}normalized_onelist_par.pt']
+        return [f'{args.COMPLETE_IGS_NAME}_par.pt']
 
     def process(self):
         i = 0
