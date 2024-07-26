@@ -12,7 +12,7 @@ def load():
     class Args:
         pass
     args = Args()
-    args.DATASET_PATH = 'C:\\Users\\marco\\Downloads\\gnn\\gnn'
+    args.DATASET_PATH = ''
     args.COMPLETE_IGS_NAME = 'balanced_WorstTimeCustomerRemoval'
     return args
 
@@ -29,7 +29,7 @@ def custom_mapping(valore):
         return 3
 
 # Leggi il dataset Excel
-df = pd.read_csv("C:\\Users\\marco\\Downloads\\EVRPTW 1\\EVRPTW\\balanced_Dataset\\balanced_Dataset\\balanced_WorstTimeCustomerRemoval.csv",sep=",")
+df = pd.read_csv("balanced_WorstTimeCustomerRemoval.csv",sep=",")
 df = df[["Instance's Name","Initial Solution", "OF_Diff"]]
 df['Results'] = df['OF_Diff'].apply(custom_mapping)
 """
