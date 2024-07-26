@@ -17,8 +17,8 @@ from datetime import datetime
 # Importa le configurazioni e le costanti
 from config import load
 
-COMPLETE_IGS_NAME = 'balanced_WorstTimeCustomerRemoval'
-DATASET_PATH = 'C:\\Users\\marco\\Downloads\\gnn\\gnn'
+COMPLETE_IGS_NAME = 'balanced_WorstTimeCustomerRemoval' # nel caso di dataset elaborato dal file "dataset" è da sostituire con balanced_final_WorstTimeCustomerRemoval
+DATASET_PATH = ''
 NET_RESULTS_PATH = 'results'
 
 # Carica le configurazioni
