@@ -32,13 +32,7 @@ def custom_mapping(valore):
 df = pd.read_csv("balanced_WorstTimeCustomerRemoval.csv",sep=",")
 df = df[["Instance's Name","Initial Solution", "OF_Diff"]]
 df['Results'] = df['OF_Diff'].apply(custom_mapping)
-"""
-block1 = shuffle(df.iloc[0:5, :])
-block2 = shuffle(df.iloc[54330:54335, :])
-block3 = shuffle(df.iloc[108660:108665, :])
-block4 = shuffle(df.iloc[162990:162995, :])
-df = pd.concat([block1, block2, block3, block4])
-"""
+
 df = shuffle(df)
 df.reset_index(drop=True, inplace=True)
 df = df.drop(["OF_Diff"],axis=1)
@@ -66,12 +60,6 @@ for idx, row in df.iterrows():
     row_paths = []
     lol = ast.literal_eval(row["Initial Solution"])
     graphs = create_ordered_graph_from_nodes([node for path in lol for node in path])
-    """
-    print(graphs)
-    pos = nx.spring_layout(graphs)
-    nx.draw(graphs, pos, with_labels=True, node_size=700, node_color='lightblue', arrows=True, arrowsize=20)
-    plt.show()
-    """
     all_graphs.append(graphs)
 
 class TraceDataset(InMemoryDataset):
@@ -97,13 +85,7 @@ class TraceDataset(InMemoryDataset):
             graph = ast.literal_eval(df.iloc[i,1])
 
             x1 = []
-            """
-            for node_id in graph_set.nodes:
-                node_features = get_feature_vector(instance,node_id)
-                x1.append(node_features)
-                print(node_id)
-                #print(node_features)
-            """
+            
             for sublist in graph:
                 for node_id in sublist:
                     node_features = get_feature_vector(instance,node_id)
