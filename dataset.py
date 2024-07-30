@@ -33,14 +33,6 @@ def custom_mapping(valore):
 df = pd.read_csv("balanced_final_WorstTimeCustomerRemoval.csv",sep=",")
  
 df['Results'] = df['Results'].apply(custom_mapping)
-
-"""
-block1 = shuffle(df.iloc[0:5, :])
-block2 = shuffle(df.iloc[54330:54335, :])
-block3 = shuffle(df.iloc[108660:108665, :])
-block4 = shuffle(df.iloc[145074:145079, :])
-df = pd.concat([block1, block2, block3, block4])
-"""
  
 df = shuffle(df)
 df.reset_index(drop=True, inplace=True)
@@ -107,20 +99,13 @@ class TraceDataset(InMemoryDataset):
                     #print(node_features)
             x = torch.tensor(x1, dtype=torch.float)
             #print(x)
-            """
-            pos = nx.spring_layout(graph_set)
-            nx.draw(graph_set, pos, with_labels=True, node_size=700, node_color='lightblue', arrows=True, arrowsize=20)
-            plt.show()
-            """
+           
             adj = nx.to_scipy_sparse_array(graph_set)
             adj = adj.tocoo()
-            #print(adj)
             row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
             col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
             edge_index = torch.stack([col, row], dim=0)
-            #print(edge_index)
-            y = torch.tensor([i])
-            data = Data(x=x, edge_index=edge_index, y=y)
+            data = Data(x=x, edge_index=edge_index)
             data_list.append(data)
             labels_list.append(df.iloc[i,0])
             i = i+1

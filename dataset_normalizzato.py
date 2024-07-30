@@ -96,8 +96,7 @@ class TraceDataset(InMemoryDataset):
             row = torch.from_numpy(adj.row.astype(np.int64)).to(torch.long)
             col = torch.from_numpy(adj.col.astype(np.int64)).to(torch.long)
             edge_index = torch.stack([col, row], dim=0)
-            y = torch.tensor([i])
-            data = Data(x=x, edge_index=edge_index, y=y)
+            data = Data(x=x, edge_index=edge_index)
             data_list.append(data)
             labels_list.append(df.iloc[i,2])
             i = i+1

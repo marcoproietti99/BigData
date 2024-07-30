@@ -17,7 +17,7 @@ from datetime import datetime
 # Importa le configurazioni e le costanti
 from config import load
 
-COMPLETE_IGS_NAME = 'balanced_WorstTimeCustomerRemoval' # nel caso di dataset elaborato dal file "dataset" è da sostituire con balanced_final_WorstTimeCustomerRemoval
+COMPLETE_IGS_NAME = 'balanced_final_WorstTimeCustomerRemoval' # nel caso di dataset elaborato dal file "dataset" è da sostituire con balanced_final_WorstTimeCustomerRemoval
 DATASET_PATH = ''
 NET_RESULTS_PATH = 'results'
 
@@ -137,10 +137,10 @@ if __name__ == '__main__':
     # Impostazione dei valori di ricerca
     if args.grid_search:
         epochs = [100]
-        k_values = [3, 7]
-        num_layers_values = [3, 5, 7]
-        lr_values = [ 10e-3, 10e-4]
-        batch_size_values = [64, 128]
+        k_values = [3]
+        num_layers_values = [3, 5]
+        lr_values = [10e-4]
+        batch_size_values = [64]
         num_neurons = [64]
         n_of_comb = (len(epochs) * len(k_values) * len(num_layers_values)
                      * len(lr_values) * len(batch_size_values) * len(num_neurons))
