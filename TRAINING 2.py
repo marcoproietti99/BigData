@@ -25,7 +25,7 @@ NET_RESULTS_PATH = 'results'
 args = load()
 plt.ioff()
 
-# Fissiamo il seed per la riproducibilità
+# Viene fissato il seed per la riproducibilità
 torch.manual_seed(args.seed)
 np.random.seed(args.seed)
 random.seed(args.seed)

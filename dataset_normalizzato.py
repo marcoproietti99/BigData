@@ -8,7 +8,6 @@ import os
 from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
 
-# Example load function for args
 def load():
     class Args:
         pass
@@ -29,7 +28,7 @@ def custom_mapping(valore):
     elif valore > 10:
         return 3
 
-# Leggi il dataset Excel
+# Legge il dataset Excel
 df = pd.read_csv("balanced_WorstTimeCustomerRemoval.csv",sep=",")
 df = df[["Instance's Name","Initial Solution", "OF_Diff"]]
 df['Results'] = df['OF_Diff'].apply(custom_mapping)
@@ -59,7 +58,7 @@ def get_feature_vector(df,node):
     else:
         return [0, 0, 0, 0, 0] 
 
-# Estrarre le liste di grafi per ciascuna riga
+# Estrae le liste di grafi per ciascuna riga
 all_graphs = []
 for idx, row in df.iterrows():
     row_paths = []

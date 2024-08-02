@@ -29,7 +29,7 @@ def custom_mapping(valore):
     elif valore == 'Molto Positivo':
         return 3
  
-# Leggi il dataset Excel
+# Legge il dataset Excel
 df = pd.read_csv("balanced_final_WorstTimeCustomerRemoval.csv",sep=",")
  
 df['Results'] = df['Results'].apply(custom_mapping)
@@ -45,7 +45,7 @@ def create_ordered_graph_from_nodes(nodes):
         G.add_edge(nodes[i], nodes[i + 1])
     return G
  
-# Estrarre le liste di grafi per ciascuna riga
+# Estrae le liste di grafi per ciascuna riga
 all_graphs = []
 for idx, row in df.iterrows():
     row_paths = []
@@ -54,7 +54,7 @@ for idx, row in df.iterrows():
     all_graphs.append(graphs)
  
 def dict_attr(graphs):
-    # Estrarre tutti i nodi unici da tutti i grafi
+    # Estrae tutti i nodi unici da tutti i grafi
     unique_nodes = set()
     for graph in graphs:
         unique_nodes.update(graph.nodes)
@@ -63,7 +63,7 @@ def dict_attr(graphs):
     max_nodes = len(unique_nodes_list)
     attr = {}
    
-    # Generare gli attributi one-hot per tutti i nodi unici
+    # Genera gli attributi one-hot per tutti i nodi unici
     for node in unique_nodes_list:
         one_hot = [0] * max_nodes
         one_hot[unique_nodes_list.index(node)] = 1
