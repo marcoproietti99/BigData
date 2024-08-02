@@ -16,6 +16,6 @@ python dataset_normalizzato.py
  ```sh
 python TRAINING2.py
 ```
- che è il file che serve per l'addestramento del modello. A seconda di quale dataset si è elaborato su "COMPLETE_IGS_NAME" va scritto o "balanced_final_WorstTimeCustomerRemoval" o "balanced_WorstTimeCustomerRemoval". Il file contiene una grid search dove è possibile cambiare i parametri per l'addestramento. Oltre questi file, gli altri contenuti sono "DGCNN.py" che contiene l'effettiva rete neurale a grafo con i suoi strati e "config.py" che contiene la configurazione dei path e dei parametri di base della rete.
+ che esegue il file che serve per l'addestramento del modello. A seconda di quale dataset si è elaborato su "COMPLETE_IGS_NAME" va scritto o "balanced_final_WorstTimeCustomerRemoval" o "balanced_WorstTimeCustomerRemoval". Il file contiene una grid search dove è possibile cambiare i parametri per l'addestramento. Oltre questi file, gli altri contenuti sono "DGCNN.py" che contiene l'effettiva rete neurale a grafo con i suoi strati e "config.py" che contiene la configurazione dei path e dei parametri di base della rete.
 
 
