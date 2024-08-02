@@ -4,6 +4,7 @@ import numpy as np
 import networkx as nx
 import pandas as pd
 import ast
+import os
 from sklearn.utils import shuffle
 import matplotlib.pyplot as plt
 
@@ -37,14 +38,18 @@ df = shuffle(df)
 df.reset_index(drop=True, inplace=True)
 df = df.drop(["OF_Diff"],axis=1)
 
+# funzione per creare un grafo NetworkX dalle righe del dataset 
 def create_ordered_graph_from_nodes(nodes):
     G = nx.DiGraph()
     for i in range(len(nodes) - 1):
         G.add_edge(nodes[i], nodes[i + 1])
     return G
 
+# one-hot encoding per ogni tipo di nodo
 type_map = {'d': [1, 0, 0], 'f': [0, 1, 0], 'c': [0, 0, 1]}
 
+# funzione per creare le feature per ogni nodo, il vettore delle feature è formato da 5 righe: le prime 3 rappresentano il tipo di nodo (d, f o c) 
+# mentre le restanti due rappresentano le coordinate x e y normalizzate 
 def get_feature_vector(df,node):
     row = df[df['StringID'] == node]
     if not row.empty:
@@ -79,8 +84,8 @@ class TraceDataset(InMemoryDataset):
 
         for graph_set in self.graphs:
 
-            instanceName = df.iloc[i,0]
-            file_path = f"instances\\{instanceName.replace('.txt', '_normalized.csv')}"
+            instanceName = df.iloc[i,0] # ogni riga fa parte di un'istanza diversa
+            file_path = os.path.join("instances", instanceName.replace(".txt", "_normalized.csv"))
             instance = pd.read_csv(file_path)
             graph = ast.literal_eval(df.iloc[i,1])
 

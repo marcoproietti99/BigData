@@ -47,17 +47,17 @@ class TraceDataset(InMemoryDataset):
 
     def get(self, idx):
         graph_data = self.get_example(idx)
-        graph_data.y = torch.tensor([self.labels[idx]], dtype=torch.long)
+        graph_data.y = torch.tensor([self.labels[idx]], dtype=torch.long) # aggiungo un attributo y a graph data per salvare la classe della riga "idx"
         return graph_data
 
-    def get_example(self, idx):
-        x = self.data.x[self.slices['x'][idx]:self.slices['x'][idx+1]]
-        edge_index = self.data.edge_index[:, self.slices['edge_index'][idx]:self.slices['edge_index'][idx+1]]
+    def get_example(self, idx): # funzione per ottenere la riga "idx" del dataset
+        x = self.data.x[self.slices['x'][idx]:self.slices['x'][idx+1]] # x rappresenta le feature dei nodi
+        edge_index = self.data.edge_index[:, self.slices['edge_index'][idx]:self.slices['edge_index'][idx+1]] # edge index rappresenta gli archi
         return Data(x=x, edge_index=edge_index)
 
 # Funzione per dividere il dataset in train e test
 def split_target(G, per):
-    dict = {i: [] for i in range(4)}  # Assumendo che ci siano 4 classi (0, 1, 2, 3)
+    dict = {i: [] for i in range(4)}  # 4 è il numero delle classi
 
     for idx in range(len(G)):
         graph = G.get(idx)
@@ -74,7 +74,7 @@ def split_target(G, per):
 
 # Funzione per plot della matrice di confusione
 def plot_confusion_matrix(reals, predictions, keyword, epoch, path):
-    classes = ['0', '1', '2', '3']  # Assumendo che ci siano 4 classi (0, 1, 2, 3)
+    classes = ['0', '1', '2', '3']  # Identificatore delle classi (0: Negativo, 1: Neutro, 2: Positivo, 3: Molto Positivo)
 
     cmt = torch.zeros(len(classes), len(classes), dtype=torch.int64)
     for p in zip(reals, predictions):
@@ -128,7 +128,6 @@ if __name__ == '__main__':
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     
     G = TraceDataset()
-    print(G)
 
     dropout, patience, perc_split = args.dropout, args.patience, args.per
     train, test = split_target(G, perc_split)

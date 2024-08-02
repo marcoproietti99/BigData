@@ -37,7 +37,8 @@ df['Results'] = df['Results'].apply(custom_mapping)
 df = shuffle(df)
 df.reset_index(drop=True, inplace=True)
 df = df.drop(["Unnamed: 0"], axis=1)
- 
+
+# funzione per creare un grafo NetworkX dalle righe del dataset 
 def create_ordered_graph_from_nodes(nodes):
     G = nx.DiGraph()
     for i in range(len(nodes) - 1):
@@ -93,12 +94,9 @@ class TraceDataset(InMemoryDataset):
             x1 = []
             for sublist in graph:
                 for node_id in sublist:
-                    #print(node_id)
                     node_features = attr_event[node_id]
                     x1.append(node_features)
-                    #print(node_features)
-            x = torch.tensor(x1, dtype=torch.float)
-            #print(x)
+            x = torch.tensor(x1, dtype=torch.float) 
            
             adj = nx.to_scipy_sparse_array(graph_set)
             adj = adj.tocoo()
