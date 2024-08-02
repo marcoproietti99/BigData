@@ -1,0 +1,2 @@
+# Addestramento modello per classificazione mosse da effettuare da veicoli elettrici per consegne
+In questo progetto si punta a utilizzare una rete neurale a grafo per addestrare un modello che classifichi in 4 classi (negativa, neutra, positiva, molto positiva), le mosse effettuabili da veicoli elettrici predisposti a consegne di pacchi, in cui i posto dove partono, sostano e consegnano rappresentano i nodi del grafo e la strada percorsa tra questi nodi gli archi.
