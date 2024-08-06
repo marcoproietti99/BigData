@@ -47,7 +47,7 @@ class TraceDataset(InMemoryDataset):
 
     def get(self, idx):
         graph_data = self.get_example(idx)
-        graph_data.y = torch.tensor([self.labels[idx]], dtype=torch.long) # aggiungo un attributo y a graph data per salvare la classe della riga "idx"
+        graph_data.y = torch.tensor([self.labels[idx]], dtype=torch.long)
         return graph_data
 
     def get_example(self, idx): # funzione per ottenere la riga "idx" del dataset
@@ -203,10 +203,10 @@ if __name__ == '__main__':
                                 train_loss, correct_predictions = 0, 0
                                 predictions, reals = torch.tensor([]).to(device), torch.tensor([]).to(device)
                                 for batch in train_loader:
-                                    batch = batch.to(device)  # Sposta il batch sulla GPU
+                                    batch = batch.to(device)
                                     optimizer.zero_grad()
                                     out = model(batch, k)
-                                    loss = criterion(out, batch.y.view(-1))  # Batch.y dovrebbe essere un tensore di etichette
+                                    loss = criterion(out, batch.y.view(-1))
                                     pred = out.argmax(dim=1)
                                     predictions = torch.cat((predictions, pred), dim=0)
                                     reals = torch.cat((reals, batch.y.view(-1)), dim=0)
