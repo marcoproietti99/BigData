@@ -135,12 +135,12 @@ if __name__ == '__main__':
 
     # Impostazione dei valori di ricerca
     if args.grid_search:
-        epochs = [100]
-        k_values = [3]
+        epochs = [200]
+        k_values = [9, 11]
         num_layers_values = [3, 5]
         lr_values = [10e-4]
-        batch_size_values = [64]
-        num_neurons = [64]
+        batch_size_values = [32, 64]
+        num_neurons = [128]
         n_of_comb = (len(epochs) * len(k_values) * len(num_layers_values)
                      * len(lr_values) * len(batch_size_values) * len(num_neurons))
     else:
